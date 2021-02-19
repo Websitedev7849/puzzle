@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    background: linear-gradient(to bottom right , #1d976c, #3f4c6b);  
+    background-attachment: fixed;
+    position: relative;
+}
+
+.container{
+    background: linear-gradient(to bottom right , #606c88, #3f4c6b);   
+    margin-top: 40px;
+    height: 595px;
+    width: 200px;
+    position: relative;
+    min-width: 22rem;
+    box-shadow: 0px 0px 50px #7787ac;
+    border: 1px solid white;
+}
+
+.pic{
+    height: 25%;
+    width: 33.33%;
+    position: absolute;
+}
+
+.pic img{
+    padding-top: 1px;
+    padding-left: 1px;
+    height: 98%;
+    width: 98%;
+}
