@@ -91,7 +91,29 @@ images.forEach(image => {
             pickedElementParent.appendChild(dropElementChild);
         }
     });
+
+    preventLongPressMenu(image);
+
 });
+
+function absorbEvent(event) {
+    var e = event || window.event;
+    e.preventDefault && e.preventDefault();
+    e.stopPropagation && e.stopPropagation();
+    e.cancelBubble = true;
+    e.returnValue = false;
+    return false;
+}
+
+function preventLongPressMenu(node) {
+    node.ontouchstart = absorbEvent;
+    node.ontouchmove = absorbEvent;
+    node.ontouchend = absorbEvent;
+    node.ontouchcancel = absorbEvent;
+}
+
+
+
 
 // for (let i=0; i<=11 ; i++) {
     
