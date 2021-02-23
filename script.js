@@ -1,5 +1,5 @@
-
-const shuffle = (copyOfPics) => {
+function main() {
+  const shuffle = (copyOfPics) => {
     let myArr = copyOfPics.slice().sort( () => Math.random() - 0.5 );
     return myArr;
 };
@@ -15,6 +15,7 @@ images = Array.from(images);
 
 var pickedElementParent;
 var dropElementChild;
+var newImage;
 
 shuffled.forEach((element) => {
     element.style.position = "absolute";
@@ -75,6 +76,8 @@ container.addEventListener("dragstart", function(event) {
             //to swap element 2
             dropElementChild = event.target.children[0];
             pickedElementParent.appendChild(dropElementChild);
+
+          
     }
     
 });
@@ -92,90 +95,40 @@ images.forEach(image => {
         }
     });
 
-    preventLongPressMenu(image);
+    image.addEventListener('touchstart' , function (event) {
+        let holdPickedElement;
+        let left , top;
+        if (pickedElementParent == undefined) {
+            pickedElementParent = event.target.parentElement;
+            pickedElementParent.style.transform = "translate(-5%, -5%)";
+            pickedElementParent.style.zIndex = 2;
+            pickedElementParent.style.boxShadow = "0px 0px 50px rgba(0, 0, 0, 0.63)";
+            
+        } else if(pickedElementParent.style.zIndex == 2){
+            
+            holdPickedElement = pickedElementParent;
+            holdPickedElement.style.transform = "";
+            holdPickedElement.style.zIndex = 0;
+            holdPickedElement.style.boxShadow = "";
+            top = holdPickedElement.style.top;
+            left = holdPickedElement.style.left;
+
+
+            pickedElementParent = event.target.parentElement;
+
+            holdPickedElement.style.top = pickedElementParent.style.top;
+            holdPickedElement.style.left = pickedElementParent.style.left;
+
+            pickedElementParent.style.top = top;
+            pickedElementParent.style.left = left;
+           
+            pickedElementParent = undefined;
+        }
+       
+    });
 
 });
 
-function absorbEvent(event) {
-    var e = event || window.event;
-    e.preventDefault && e.preventDefault();
-    e.stopPropagation && e.stopPropagation();
-    e.cancelBubble = true;
-    e.returnValue = false;
-    return false;
 }
 
-function preventLongPressMenu(node) {
-    node.ontouchstart = absorbEvent;
-    node.ontouchmove = absorbEvent;
-    node.ontouchend = absorbEvent;
-    node.ontouchcancel = absorbEvent;
-}
-
-
-
-
-// for (let i=0; i<=11 ; i++) {
-    
-    
-// }
-
-//   pickedElementParent.appendChild(event.target.children[0]);
-//   event.target.appendChild(pickedElementParent.children[1]);
-
-   /*
-    container.children[i].addEventListener('mousedown' , function (e) {
-        this.style.top = e.pageY + "px";
-        this.style.left = e.pageX + "px";
-        this.style.transform = "translate(-90%,-90%)";
-       
-        mousedown = true;
-        
-       
-    });    
-    
-   
-    container.children[i].addEventListener('drag' , function (e) {
-        if (mousedown == true) {
-            this.style.zIndex = "1";
-            this.style.top = e.pageY + "px";
-            this.style.left = e.pageX + "px";
-            this.style.transform = "translate(-90%,-90%)";
-        }
-    });   
-    */
-// var containerHeight = container.style.height;
-// var containerWidth = container.style.width;
-// var containerMargin = container.style.marginTop;
-
-
-// const sliced = (hw) => hw.slice(0,-2) ;
-
-// // heigth and width in pixels
-// containerHeight = sliced(containerHeight);
-// containerWidth = sliced(containerWidth);
-// containerMargin = sliced(containerMargin);
-
-// var cursor = document.getElementById('cursor');
-// var page = document.getElementsByClassName('page');
-// cursor.style.position = "absolute";
-
-// window.addEventListener('mousemove' , function (e) {
-    
-//     cursor.style.top = e.pageY + "px";
-//     cursor.style.left = e.pageX + "px";
-
-//     page[0].innerHTML = cursor.style.top;
-//     page[1].innerHTML = cursor.style.left;
-// });
-
- 
- // droptarget[0].style.top = droptarget[1].style.top = droptarget[2].style.top = "0%";
-// droptarget[3].style.top = droptarget[4].style.top = droptarget[5].style.top = "25%";
-// droptarget[6].style.top = droptarget[7].style.top = droptarget[8].style.top = "50%";
-// droptarget[9].style.top = droptarget[10].style.top = droptarget[11].style.top = "75%";
-
-
-// droptarget[0].style.left = droptarget[3].style.left = droptarget[6].style.left = droptarget[9].style.left = "0%";
-// droptarget[1].style.left = droptarget[4].style.left = droptarget[7].style.left = droptarget[10].style.left = "33%";
-// droptarget[2].style.left = droptarget[5].style.left = droptarget[8].style.left = droptarget[11].style.left = "66%";
+setTimeout(main , 1500);
