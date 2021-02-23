@@ -30,6 +30,7 @@ body{
     height: 25%;
     width: 33.33%;
     position: absolute;
+    transition: all 0.3s;
 }
 
 .pic img{
@@ -37,4 +38,66 @@ body{
     padding-left: 1px;
     height: 98%;
     width: 98%;
+}
+
+.pic:nth-child(1){
+    top: 0;
+    left: 0%;
+}
+
+.pic:nth-child(2){
+    top: 0;
+    left: 33%;
+}
+
+.pic:nth-child(3){
+    top: 0;
+    left: 66%;
+}
+
+
+.pic:nth-child(4){
+    top: 25%;
+    left: 0%;
+}
+
+
+.pic:nth-child(5){
+    top: 25%;
+    left: 33%;
+}
+
+.pic:nth-child(6){
+    top: 25%;
+    left: 66%;
+}
+
+.pic:nth-child(7){
+    top: 50%;
+    left: 0%;
+}
+
+.pic:nth-child(8){
+    top: 50%;
+    left: 33%;
+}
+
+.pic:nth-child(9){
+    top: 50%;
+    left: 66%;
+}
+
+.pic:nth-child(10){
+    top: 75%;
+    left: 0%;
+}
+
+.pic:nth-child(11){
+    top: 75%;
+    left: 33%;
+}
+
+.pic:nth-child(12){
+    top: 75%;
+    left: 66%;
 }
