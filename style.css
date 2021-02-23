@@ -40,6 +40,33 @@ body{
     width: 98%;
 }
 
+.pointer{
+    position: absolute;
+    z-index: 3;
+    height: 10%;
+    width: 16%;
+    top: 27%;
+    left: 40%; 
+    padding: 10px;
+    border-radius: 50%;
+    display: none;
+    transition: top 0.4s;
+}
+
+.select{
+    height: 100%;
+    width: 100%;
+    transform: rotate(-40deg);
+}
+
+#info{
+    position: absolute;
+    bottom: -7%;
+    color: white;
+    font-size: 20px;
+    display: none;
+}
+
 .pic:nth-child(1){
     top: 0;
     left: 0%;
