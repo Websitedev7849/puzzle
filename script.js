@@ -15,7 +15,9 @@ images = Array.from(images);
 
 var pickedElementParent;
 var dropElementChild;
-var newImage;
+var cursor = document.querySelector('.pointer');
+
+cursor.style.top = "27%";
 
 shuffled.forEach((element) => {
     element.style.position = "absolute";
@@ -129,6 +131,68 @@ images.forEach(image => {
 
 });
 
+var pointer = function(){
+  if(window.innerWidth < 400) cursor.style.display = "block";
+  let initialElement , finalElement;
+  
+  shuffled.forEach(element => {
+    if (element.style.top == "25%" && element.style.left == "33%") {
+      initialElement = element;
+    }
+    else if (element.style.top == "75%" && element.style.left == "33%") {
+      finalElement = element;
+    }
+  });
+  
+  
+  setTimeout(function () {
+    if (window.innerWidth < 400) {
+      cursor.style.border = "4px solid white";
+      initialElement.style.transform = "translate(-5%, -5%)";
+      initialElement.style.zIndex = 2;
+      initialElement.style.boxShadow = "0px 0px 50px rgba(0, 0, 0, 0.63)";
+    }
+  } , 1400);
+  
+  setTimeout(function () {
+    if (window.innerWidth < 400) {
+      cursor.style.top = "77%";
+      cursor.style.border = "";
+    }
+  } , 1700);
+
+  setTimeout(() => {
+    if (window.innerWidth < 400) {
+      cursor.style.border = "4px solid white";
+      initialElement.style.top = "75%";
+      initialElement.style.left = "33";
+
+      finalElement.style.top = "25%";
+      finalElement.style.left = "33%";
+
+      initialElement.style.transform = "";
+      initialElement.style.zIndex = 0;
+      initialElement.style.boxShadow = "";
+    }
+  }, 2400);
+
+
+  setTimeout(() => {
+    if (window.innerWidth < 400) {
+      cursor.style.display = "none";
+    }
+  }, 3000);
+
 }
 
-setTimeout(main , 1500);
+
+setTimeout(pointer , 1300);
+
+}
+
+
+
+window.addEventListener('load' , function () {
+  if (window.innerWidth > 400) document.getElementById('info').style.display = "block";  
+  setTimeout(main , 1000);
+})
