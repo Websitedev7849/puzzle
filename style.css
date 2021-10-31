@@ -24,6 +24,7 @@ body{
     min-width: 22rem;
     box-shadow: 0px 0px 50px #7787ac;
     border: 1px solid white;
+    cursor: pointer;
 }
 
 .pic{
