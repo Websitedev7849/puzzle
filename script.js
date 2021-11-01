@@ -1,4 +1,4 @@
-const shuffle = (copyOfPics) => {
+function shuffle(copyOfPics) {
   let myArr = copyOfPics.slice().sort( () => Math.random() - 0.5 );
   return myArr;
 };
@@ -11,15 +11,8 @@ let pickedElementParent;
 const cursor = document.querySelector('.pointer');
 cursor.style.top = "27%";
 
-/**
- * Todo: figure out a way to detect finished puzzle
- */
 
 function main() {
-
-    shuffled.forEach((element) => {
-        element.style.position = "absolute";
-    });
 
     shuffled[0].style.top = shuffled[1].style.top = shuffled[2].style.top = "0%";
     shuffled[3].style.top = shuffled[4].style.top = shuffled[5].style.top = "25%";
@@ -38,7 +31,7 @@ function main() {
 
     });
 
-    setTimeout(pointer , 1300);
+    setTimeout(pointerAnimation , 1300);
 
 }
 
@@ -99,20 +92,21 @@ function handleClickAndTouch(event) {
 
 }
 
-function pointer(){
+/**
+ * pointerAnimation function is used to animate the cursor.
+ * we are using javascript function to animate pointer because...
+ * we can't find middle element and second last element in css after shuffling elements
+ */
+function pointerAnimation(){
   cursor.style.display = "block";
-  let initialElement , finalElement;
+
+  // middle element
+  let initialElement = shuffled.find(element => element.style.top == "25%" && element.style.left == "33%"); 
+
+  // second last element
+  let finalElement = shuffled.find(element => element.style.top == "75%" && element.style.left == "33%");
   
-  shuffled.forEach(element => {
-    if (element.style.top == "25%" && element.style.left == "33%") {
-      initialElement = element;
-    }
-    else if (element.style.top == "75%" && element.style.left == "33%") {
-      finalElement = element;
-    }
-  });
-  
-  
+  // click animation
   setTimeout(function () {
       cursor.style.border = "4px solid white";
       initialElement.style.transform = "translate(-5%, -5%)";
@@ -120,11 +114,13 @@ function pointer(){
       initialElement.style.boxShadow = "0px 0px 50px rgba(0, 0, 0, 0.63)";
   } , 1400);
   
+  // move cursor down animation
   setTimeout(function () {
       cursor.style.top = "77%";
       cursor.style.border = "";
   } , 1700);
 
+  // click in to-be-replaced element animation
   setTimeout(() => {
       cursor.style.border = "4px solid white";
       initialElement.style.top = "75%";
@@ -139,6 +135,7 @@ function pointer(){
   }, 2400);
 
 
+  // hide cursor
   setTimeout(() => {
       cursor.style.display = "none";
   }, 3000);
@@ -147,6 +144,5 @@ function pointer(){
 
 
 window.addEventListener('load' , function () {
-  // if (window.innerWidth > 400) document.getElementById('info').style.display = "block";  
   setTimeout(main , 1000);
 })
