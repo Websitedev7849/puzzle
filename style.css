@@ -70,29 +70,32 @@ body{
 }
 
 .successPopup {
+    position: fixed;
+    top: -30rem;
     display: grid;
     padding: 1rem;
     grid-template-rows: repeat(7,1fr);
     place-items: center;
     background: #fff;
-    position: fixed;
-    width: 14rem;
-    height: 19rem;
+    width: 17rem;
+    height: 24rem;
     box-shadow: 1px 1px 18px #fff;
 }
     
     .success {
         font-size: x-large;
         font-weight: bold;
+        color: #21af7d;
     }
 
     .message {
-        font-size: medium;
+        font-size: large;
     }
 
     .successImage {
         grid-row: 4/5;
-        transform: scale(3);
+        height: 13rem;
+        width: 10rem;
     }
 
     .continueBtn {
@@ -104,8 +107,21 @@ body{
         color: white;
         border-radius: 18px;
         font-size: 19px;
+        cursor: pointer;
     }
 
+.slideIn {
+    animation: slideIn 1s linear forwards;
+}
+
+@keyframes slideIn {
+    from {
+        top: -30rem;
+    }
+    to {
+        top: 7rem;
+    }
+}
     
 .pic:nth-child(1){
     top: 0;

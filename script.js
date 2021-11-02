@@ -11,6 +11,14 @@ let pickedElementParent;
 const cursor = document.querySelector('.pointer');
 cursor.style.top = "27%";
 
+const continueBtn = document.querySelector(".continueBtn");
+
+//remove popup element from screen
+continueBtn.addEventListener("click", e => {
+  const parentElement = e.target.parentElement;
+  parentElement.classList.remove("slideIn");
+})
+
 
 function main() {
 
@@ -32,7 +40,7 @@ function main() {
     });
 
     setTimeout(pointerAnimation , 1300);
-
+    showSuccessPopup();
 }
 
 function isPuzzleSoved(pics) {
@@ -87,9 +95,16 @@ function handleClickAndTouch(event) {
 
   /** check if the puzzle is solved on every move */
   if (isPuzzleSoved(pics)) {
-    console.log("puzzle solved");
+    showSuccessPopup();
   }
  
+
+}
+
+function showSuccessPopup() {
+  const successPopup = document.querySelector(".successPopup");
+
+  successPopup.classList.add("slideIn")
 
 }
 
