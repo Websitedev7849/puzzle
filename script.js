@@ -35,7 +35,7 @@ function main() {
 
 }
 
-function verify(pics) {
+function isPuzzleSoved(pics) {
 
   const top0 = (pics[0].style.top == '0%' && pics[1].style.top == '0%' && pics[2].style.top == '0%');
   const top25 = (pics[3].style.top == '25%' && pics[4].style.top == '25%' && pics[5].style.top == '25%');
@@ -85,7 +85,8 @@ function handleClickAndTouch(event) {
       pickedElementParent = undefined;
   }
 
-  if (verify(pics)) {
+  /** check if the puzzle is solved on every move */
+  if (isPuzzleSoved(pics)) {
     console.log("puzzle solved");
   }
  

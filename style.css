@@ -13,6 +13,7 @@ body{
     background: linear-gradient(to bottom right , #1d976c, #3f4c6b);  
     background-attachment: fixed;
     position: relative;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container{
@@ -68,6 +69,44 @@ body{
     display: none;
 }
 
+.successPopup {
+    display: grid;
+    padding: 1rem;
+    grid-template-rows: repeat(7,1fr);
+    place-items: center;
+    background: #fff;
+    position: fixed;
+    width: 14rem;
+    height: 19rem;
+    box-shadow: 1px 1px 18px #fff;
+}
+    
+    .success {
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+    .message {
+        font-size: medium;
+    }
+
+    .successImage {
+        grid-row: 4/5;
+        transform: scale(3);
+    }
+
+    .continueBtn {
+        grid-row: 7;
+        height: 2.5rem;
+        width: 10rem;
+        background: #21af7d;
+        border: none;
+        color: white;
+        border-radius: 18px;
+        font-size: 19px;
+    }
+
+    
 .pic:nth-child(1){
     top: 0;
     left: 0%;
