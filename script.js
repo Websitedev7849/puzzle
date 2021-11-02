@@ -40,7 +40,6 @@ function main() {
     });
 
     setTimeout(pointerAnimation , 1300);
-    showSuccessPopup();
 }
 
 function isPuzzleSoved(pics) {
